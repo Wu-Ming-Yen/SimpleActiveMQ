@@ -25,6 +25,7 @@ public class SendTopic {
 			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			destination = session.createTopic("SAMPLETOPIC");
 			//destination = session.createQueue("SAMPLEQUEUE");
+			producer = session.createProducer(destination);
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
@@ -32,7 +33,6 @@ public class SendTopic {
 	
 	public void sendMessage(String msg) {
 		try {
-			producer = session.createProducer(destination);
 			TextMessage message = session.createTextMessage();
 			message.setText(msg);
 			producer.send(message);

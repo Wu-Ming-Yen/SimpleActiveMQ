@@ -11,7 +11,12 @@ public class main {
 		send.sendMessage("testing message 1");
 		send.sendMessage("testing message 2");
 		send.closeConnection();
-		
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		thread.stop();
 	}
 	
 }
